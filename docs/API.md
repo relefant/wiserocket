@@ -1,4 +1,4 @@
-@relefant/wiseRocket / [Exports](modules.md)
+@relefant/wiserocket / [Exports](modules.md)
 
 [@relefant/wiseRocket](../README.md)
 ================

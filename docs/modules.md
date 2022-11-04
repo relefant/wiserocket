@@ -1,6 +1,6 @@
-[@relefant/wiseRocket](API.md) / Exports
+[@relefant/wiserocket](API.md) / Exports
 
-# @relefant/wiseRocket
+# @relefant/wiserocket
 
 ## Table of contents
 
@@ -20,4 +20,4 @@
 
 #### Defined in
 
-wiseRocket.ts:121
+[wiseRocket.ts:121](https://github.com/relefant/wiserocket/blob/b8209c8/src/wiseRocket.ts#L121)
