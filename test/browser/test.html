@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<title>bonaroo-able test</title>
+<script src="../../dist/browser/wiseRocket.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const { wiseRocket, ConsoleLogSink, ConsoleFormatter, LogToken } = window.wiseRocket;
+    console.log('WiseRocket Browser Test');
+    console.log(wiseRocket);
+
+    const log = wiseRocket.getLogger('SuperLogTest');
+
+    wiseRocket.init({
+      enabled: true,
+      appName: 'SuperLogBrowserTest',
+      metadata: {},
+    });
+
+    // Add console logging sink
+    wiseRocket.registerSink(
+      new ConsoleLogSink(
+        // new ObjectFormatter({
+        //   argsOnly: false,
+        // }),
+        // new JsonFormatter({
+        //   argsOnly: false,
+        //   excludeSerializationErrors: true,
+        // }),
+        new ConsoleFormatter({
+          // colourise: false,
+          // padLevel: false,
+          template: `${LogToken.upTime} ${LogToken.level} [${LogToken.logger}]${LogToken.data}`,
+          // superfast: true,
+        }),
+        // new FastConsoleFormatter({
+        //   includeAppName: false,
+        //   includeTime: true,
+        //   includeLogger: true,
+        //   includeLevel: true,
+        // }),
+      ),
+      {
+        enabled: true,
+        // supportedLevels: ['warn', 'fatal'], // ALL
+        loggers: {
+          default: 'debug',
+          test: 'track',
+        },
+      },
+    );
+
+    log.track('This is a TRACK message');
+    log.trace('This is a TRACE message');
+    log.debug('This is a DEBUG message');
+    log.info('This is an INFO message');
+    log.warn('This is a WARN message');
+    log.error('This is an ERROR message');
+    log.fatal('This is a FATAL message');
+
+    // const Enum = wiseRocket(
+    //   {
+    //     thing: 'thing',
+    //     other: 'other',
+    //     something: 'somethingOther',
+    //     99: 1,
+    //   },
+    //   {
+    //     iterationKeys: ['other', 99, 'thing', 'something'],
+    //   },
+    // );
+    // console.log(Enum);
+
+    // const textEnum = document.createElement('pre');
+    // textEnum.textContent = JSON.stringify(Enum, null, 2);
+    // document.body.appendChild(textEnum);
+
+    // const textEnumIteration = document.createElement('pre');
+    // const s = [];
+    // for (const e of Enum) {
+    //   s.push(e);
+    // }
+    // console.log(s);
+    // const str = JSON.stringify(s);
+    // textEnumIteration.textContent = str;
+    // document.body.appendChild(textEnumIteration);
+
+    const ok = true;
+
+    const textResult = document.createElement('pre');
+    textResult.textContent = ok ? 'PASS' : 'FAIL';
+    textResult.style.background = ok ? 'green' : 'red';
+    textResult.style.color = 'white';
+    textResult.style.display = 'inline';
+    document.body.appendChild(textResult);
+  });
+</script>
